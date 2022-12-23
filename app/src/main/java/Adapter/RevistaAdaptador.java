@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,6 +44,14 @@ public class RevistaAdaptador extends RecyclerView.Adapter<RevistaAdaptador.Revi
         Glide.with(Ctx)
                 .load(revista.getPortada())
                 .into(holder.imageportada);
+
+        holder.imageportada.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Revista item = lista_revistas.get(holder.getAdapterPosition());
+                Toast.makeText(Ctx, "You clicked " + item.getTitulo(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
