@@ -10,6 +10,17 @@ public class Revista {
 
     private String titulo;
     private String portada;
+    private String journal_id;
+
+    public String getJournal_id() {
+        return journal_id;
+    }
+
+    public void setJournal_id(String journal_id) {
+        this.journal_id = journal_id;
+    }
+
+
 
     public String getTitulo() {
         return titulo;
@@ -28,8 +39,8 @@ public class Revista {
     }
 
     public Revista(JSONObject a) throws JSONException {
+        journal_id =  a.getString("journal_id").toString();
         titulo =  a.getString("name").toString();
-
         portada =  a.getString("portada").toString() ;
 
     }

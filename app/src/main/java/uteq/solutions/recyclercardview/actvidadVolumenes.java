@@ -38,11 +38,12 @@ public class actvidadVolumenes extends AppCompatActivity {
         recyclerVol.setLayoutManager(new LinearLayoutManager(this));
         recyclerVol.setItemAnimator(new DefaultItemAnimator());
 
-        // ...
+        Bundle bundle = this.getIntent().getExtras();
+        String IDRevista = bundle.getString("id");
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="https://revistas.uteq.edu.ec/ws/issues.php?j_id=2";
+        String url ="https://revistas.uteq.edu.ec/ws/issues.php?j_id=" + IDRevista;
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,

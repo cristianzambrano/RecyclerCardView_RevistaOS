@@ -1,6 +1,8 @@
 package Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +19,9 @@ import java.util.List;
 
 import Models.Revista;
 import Models.Usuario;
+import uteq.solutions.recyclercardview.Actividad_Revista;
 import uteq.solutions.recyclercardview.R;
+import uteq.solutions.recyclercardview.actvidadVolumenes;
 
 public class RevistaAdaptador extends RecyclerView.Adapter<RevistaAdaptador.RevistaViewHolder> {
     private Context Ctx;
@@ -49,7 +53,12 @@ public class RevistaAdaptador extends RecyclerView.Adapter<RevistaAdaptador.Revi
             @Override
             public void onClick(View view) {
                 Revista item = lista_revistas.get(holder.getAdapterPosition());
-                Toast.makeText(Ctx, "You clicked " + item.getTitulo(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(Ctx, actvidadVolumenes.class);
+                Bundle b = new Bundle();
+                b.putString("id",item.getJournal_id());
+                intent.putExtras(b);
+                Ctx.startActivity(intent);
+                //Toast.makeText(Ctx, "You clicked " + item.getTitulo(), Toast.LENGTH_LONG).show();
             }
         });
     }
