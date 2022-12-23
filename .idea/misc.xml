@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_actividad_revista.xml" value="0.21" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/lyitem_usuario.xml" value="0.16770833333333332" />
+        <entry key="app/src/main/res/layout/lyitem_usuario.xml" value="0.15151515151515152" />
+        <entry key="app/src/main/res/layout/lyrevista_item.xml" value="0.22" />
       </map>
     </option>
   </component>

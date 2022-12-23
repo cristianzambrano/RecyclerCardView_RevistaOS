@@ -40,11 +40,12 @@
                 android:layout_below="@id/txtAvatar"
                 android:layout_marginLeft="5dp"
                 android:layout_toRightOf="@id/imgAvatar"
-                android:background="#FFBB86FC"
+                android:background="@color/amarillo"
                 android:text="correo@gmmail.com"
                 android:textAlignment="viewStart"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small.Inverse"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/txtAvatar"
                 android:layout_width="wrap_content"
