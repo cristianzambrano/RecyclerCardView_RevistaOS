@@ -19,10 +19,13 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import Adapter.PaisAdaptador;
 import Adapter.VolumenAdaptador;
+import Models.Pais;
 import Models.Volumen;
 
 public class actividadPaises2 extends AppCompatActivity {
@@ -33,39 +36,40 @@ public class actividadPaises2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_paises2);
-/*
-        recyclerVol = (RecyclerView) findViewById(R.id.recyclerVolumenes);
-        recyclerVol.setHasFixedSize(true);
-        recyclerVol.setLayoutManager(new LinearLayoutManager(this));
-        recyclerVol.setItemAnimator(new DefaultItemAnimator());
+
+        recyclerPais = (RecyclerView) findViewById(R.id.recyclerPaises);
+        recyclerPais.setHasFixedSize(true);
+        recyclerPais.setLayoutManager(new LinearLayoutManager(this));
+        recyclerPais.setItemAnimator(new DefaultItemAnimator());
 
         Bundle bundle = this.getIntent().getExtras();
-        String IDRevista = bundle.getString("id");
+//        String IDRevista = bundle.getString("id");
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="https://revistas.uteq.edu.ec/ws/issues.php?j_id=" + IDRevista;
+        String url ="http://www.geognos.com/api/en/countries/info/all.json";
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        ArrayList<Volumen> volumenes = new ArrayList<Volumen> ();
+                        ArrayList<Pais> paises = new ArrayList<Pais> ();
 
                         try {
-                            JSONArray JSONlistaVolumen=  new JSONArray(response);
-                            volumenes = Volumen.JsonObjectsBuild(JSONlistaVolumen);
+                            JSONObject JSONOBJECTpais = new JSONObject(response);
+                            JSONArray JSONlistaPais=  JSONOBJECTpais.getJSONArray("Results");
+                            paises = Pais.JsonObjectsBuild(JSONlistaPais);
 
 
                             int resId = R.anim.layout_animation_down_to_up;
                             LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getApplicationContext(),
                                     resId);
-                            recyclerVol.setLayoutAnimation(animation);
+                            recyclerPais.setLayoutAnimation(animation);
 
 
-                            VolumenAdaptador adapatorVolumen = new VolumenAdaptador(getApplicationContext(), volumenes);
-                            recyclerVol.setAdapter(adapatorVolumen);
+                            PaisAdaptador adapatorPais = new PaisAdaptador(getApplicationContext(), paises);
+                            recyclerPais.setAdapter(adapatorPais);
 
                         }
                         catch (JSONException e)
@@ -84,6 +88,6 @@ public class actividadPaises2 extends AppCompatActivity {
 
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
-*/
+
     }
 }
