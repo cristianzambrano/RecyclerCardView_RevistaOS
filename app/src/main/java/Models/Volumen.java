@@ -51,6 +51,8 @@ public class Volumen {
         doi =  a.getString("doi").toString() ;
         urlPortada= a.getString("cover").toString() ;
 
+
+
     }
 
     public static ArrayList<Volumen> JsonObjectsBuild(JSONArray datos) throws JSONException {
