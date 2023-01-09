@@ -22,6 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import Adapter.PaisAdaptador;
 import Adapter.VolumenAdaptador;
@@ -58,16 +59,15 @@ public class actividadPaises2 extends AppCompatActivity {
 
                         try {
                             JSONObject JSONOBJECTpais = new JSONObject(response);
-                            JSONArray JSONlistaPais=  JSONOBJECTpais.getJSONArray("Results");
-                            paises = Pais.JsonObjectsBuild(JSONlistaPais);
-
+                            JSONObject JSONOBJECTpais2 = JSONOBJECTpais.getJSONObject("Results");
+                            Iterator < String > codigosPaises = JSONOBJECTpais2.keys();
+                            while (codigosPaises.hasNext()) 
+                                paises.add(new Pais(JSONOBJECTpais2.getJSONObject(codigosPaises.next())));
 
                             int resId = R.anim.layout_animation_down_to_up;
                             LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getApplicationContext(),
                                     resId);
                             recyclerPais.setLayoutAnimation(animation);
-
-
                             PaisAdaptador adapatorPais = new PaisAdaptador(getApplicationContext(), paises);
                             recyclerPais.setAdapter(adapatorPais);
 

@@ -51,12 +51,14 @@ public class Pais {
     private String urlBandera, titulo, capital, prefijo, codPais;
 
     public Pais(JSONObject a) throws JSONException {
-        titulo =  a.getString("name").toString();
+        titulo =  a.getString("Name").toString();
         JSONObject countryCode = a.getJSONObject("CountryCodes");
         codPais = countryCode.getString("iso2");
-        urlBandera =  "http://www.geognos.com/api/en/countries/flag/"+codPais+".png ";
-        JSONObject countryCapital = a.getJSONObject("Capital");
-        capital =   countryCapital.getString("name").toString() ;
+        urlBandera =  "http://www.geognos.com/api/en/countries/flag/"+codPais+".png";
+        if (!a.isNull("Capital")) {
+            JSONObject countryCapital = a.getJSONObject("Capital");
+            capital =   countryCapital.getString("Name").toString() ;
+        }else capital="No Tiene Capital";
         prefijo =  a.getString("TelPref").toString() ;
     }
 
