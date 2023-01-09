@@ -61,7 +61,7 @@ public class actividadPaises2 extends AppCompatActivity {
                             JSONObject JSONOBJECTpais = new JSONObject(response);
                             JSONObject JSONOBJECTpais2 = JSONOBJECTpais.getJSONObject("Results");
                             Iterator < String > codigosPaises = JSONOBJECTpais2.keys();
-                            while (codigosPaises.hasNext()) 
+                            while (codigosPaises.hasNext())
                                 paises.add(new Pais(JSONOBJECTpais2.getJSONObject(codigosPaises.next())));
 
                             int resId = R.anim.layout_animation_down_to_up;
